@@ -4,7 +4,7 @@ https://github.com/ansible/ansible-examples/tree/master/tomcat-standalone
 ## Standalone Tomcat Deployment
 
 - Requires Ansible 1.2 or newer
-- Expects CentOS/RHEL 6.x hosts
+- Expects CentOS/RHEL 7.x hosts
 
 These playbooks deploy a very basic implementation of Tomcat Application Server,
 version 7. To use them, first edit the `hosts` inventory file to contain the
