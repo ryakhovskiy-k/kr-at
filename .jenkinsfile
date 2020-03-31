@@ -5,7 +5,9 @@ pipeline {
     stage('Init') {
       steps {
         echo 'Checkout SCM'
-        checkout scm                
+        checkout scm
+        ansiblePlaybook inventory: 'hosts', playbook: 'site.yml' 
+// ansibleTower credential: 'jenkins-credentials-for-tower', extraVars: '', importTowerLogs: false, importWorkflowChildLogs: false, inventory: 'hosts', jobTags: '', jobTemplate: '', jobType: 'run', limit: '', removeColor: false, skipJobTags: '', templateType: 'job', throwExceptionWhenFail: false, towerCredentialsId: '', towerServer: ' - None -', verbose: false
       }
     }
   
