@@ -1,32 +1,18 @@
-pipeline {
-  agent any
+def workspace="${env.JENKINS_HOME}/workspace/${env.JOB_NAME}/${env.BUILD_ID}"
 
-  stages {
-    stage('Init') {
-      steps {
-        echo 'Checkout SCM'
-        checkout scm
-        ansiblePlaybook inventory: 'hosts', playbook: 'site.yml' 
-// ansibleTower credential: 'jenkins-credentials-for-tower', extraVars: '', importTowerLogs: false, importWorkflowChildLogs: false, inventory: 'hosts', jobTags: '', jobTemplate: '', jobType: 'run', limit: '', removeColor: false, skipJobTags: '', templateType: 'job', throwExceptionWhenFail: false, towerCredentialsId: '', towerServer: ' - None -', verbose: false
-      }
-    }
-  
-    stage('Build') {
-      steps {
-        echo 'Building'
-      }
+node {
+  ws(workspace) {
+    stage('Checkout SCM') {
+      checkout scm
     }
 
-    stage('Test') {
-      steps {
-        echo 'Testing..'
-      }
+    stage('Invoke Ansible') {
+      ansiblePlaybook inventory: 'hosts', playbook: 'site.yml'
     }
 
-    stage('Deploy') {
-      steps {
-        echo 'Deploying....'
-      }
+    stage('Invoke Ansible Tower') {
+      echo 'skip'
+      ansibleTower credential: 'jenkins-credentials-for-tower', extraVars: '', importTowerLogs: false, importWorkflowChildLogs: false, inventory: 'hosts', jobTags: '', jobTemplate: '', jobType: 'run', limit: '', removeColor: false, skipJobTags: '', templateType: 'job', throwExceptionWhenFail: false, towerCredentialsId: '', towerServer: ' - None -', verbose: false
     }
   }
 }
