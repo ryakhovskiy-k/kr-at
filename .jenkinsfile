@@ -12,7 +12,7 @@ node {
 
     stage('Invoke Ansible Tower') {
       echo 'skip'
-      ansibleTower credential: 'jenkins-credentials-for-tower', extraVars: '', importTowerLogs: false, importWorkflowChildLogs: false, inventory: 'hosts', jobTags: '', jobTemplate: '', jobType: 'run', limit: '', removeColor: false, skipJobTags: '', templateType: 'job', throwExceptionWhenFail: false, towerCredentialsId: '', towerServer: ' - None -', verbose: false
+      //ansibleTower credential: 'jenkins-credentials-for-tower', extraVars: '', importTowerLogs: false, importWorkflowChildLogs: false, inventory: 'hosts', jobTags: '', jobTemplate: '', jobType: 'run', limit: '', removeColor: false, skipJobTags: '', templateType: 'job', throwExceptionWhenFail: false, towerCredentialsId: '', towerServer: ' - None -', verbose: false
     }
   }
 }
